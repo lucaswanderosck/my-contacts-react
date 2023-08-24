@@ -15,5 +15,7 @@ export default {
     gray_700: "#0D0D0D",
 
     danger: "#E25858",
+
+    green: "#13FF00",
   },
 };
