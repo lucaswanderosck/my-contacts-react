@@ -10,4 +10,7 @@ export const Container = styled.div`
   height: 4rem;
   border-radius: 0.8rem;
   font-size: 1.6rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none; 
 `;

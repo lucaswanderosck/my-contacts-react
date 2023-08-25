@@ -17,7 +17,6 @@ export const Container = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.blue};
-    filter: brightness(0.9);
   }
 
   > svg {

@@ -43,6 +43,11 @@ export const Button = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    filter: saturate(150%);
+    transition: filter 0.2s;
+  }
 `;
 export const EditButton = styled(Button)`
   color: ${({ theme }) => theme.colors.blue};

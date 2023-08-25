@@ -2,13 +2,29 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import ContactClass from "../../models/ContactClass";
 
 type ContactState = {
-  itens: ContactClass[];
+  contactItems: ContactClass[];
 };
 
 const initialState: ContactState = {
-  itens: [
-    new ContactClass("João", "João@gmail.com", "(22) 98163-5832", 1),
-    new ContactClass("Maria", "maria@gmail.com", "(22) 98174-8463", 2),
+  contactItems: [
+    {
+      id: 1,
+      name: "John",
+      email: "john@gmail.com",
+      phone: "(22) 98145-8946",
+    },
+    {
+      id: 2,
+      name: "Luíz",
+      email: "luiz@gmail.com",
+      phone: "(22) 98145-8946",
+    },
+    {
+      id: 3,
+      name: "lucas",
+      email: "lucas@gmail.com",
+      phone: "(22) 98145-8946",
+    },
   ],
 };
 
@@ -17,17 +33,17 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     removeContact: (state, action: PayloadAction<number>) => {
-      state.itens = state.itens.filter(
+      state.contactItems = state.contactItems.filter(
         (contact) => contact.id !== action.payload
       );
     },
 
     editContact: (state, action: PayloadAction<ContactClass>) => {
-      const contactIndex = state.itens.findIndex(
-        (t) => t.id === action.payload.id
+      const contactIndex = state.contactItems.findIndex(
+        (c) => c.id === action.payload.id
       );
       if (contactIndex >= 0) {
-        state.itens[contactIndex] = action.payload;
+        state.contactItems[contactIndex] = action.payload;
       }
     },
   },

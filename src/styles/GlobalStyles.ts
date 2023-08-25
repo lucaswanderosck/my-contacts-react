@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        overflow: hidden;
+        overflow: auto;
         background: ${({ theme }) => theme.colors.gray_600};
     }
 `;

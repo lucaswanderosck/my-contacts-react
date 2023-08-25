@@ -20,45 +20,48 @@ const CardContact = ({
   id,
 }: Props) => {
   const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(originName);
-  const [email, setEmail] = useState(originEmail);
-  const [phone, setPhone] = useState(originPhone);
 
-  const cancelEditing = () => {
-    setIsEditing(false);
-    setName(originName);
-    setEmail(originEmail);
-    setPhone(originPhone);
-  };
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [editingInfo, setEditingInfo] = useState({
+    name: originName,
+    email: originEmail,
+    phone: originPhone,
+  });
 
   const handleSave = () => {
-    dispatch(editContact({ name, email, phone, id }));
+    dispatch(editContact({ ...editingInfo, id }));
     setIsEditing(false);
   };
 
   return (
     <S.Container>
       <S.ContactInfos>
-        <LetterProfile letter={name}/>
+        <LetterProfile letter={editingInfo.name} />
         <div>
           <S.InputInfos
             type="text"
-            value={name}
+            value={editingInfo.name}
             disabled={!isEditing}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) =>
+              setEditingInfo({ ...editingInfo, name: event.target.value })
+            }
           />
           <S.InputInfos
             type="text"
-            value={email}
+            value={editingInfo.email}
             disabled={!isEditing}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) =>
+              setEditingInfo({ ...editingInfo, email: event.target.value })
+            }
           />
           <S.InputInfos
             type="text"
-            value={phone}
+            value={editingInfo.phone}
             disabled={!isEditing}
-            onChange={(event) => setPhone(event.target.value)}
+            onChange={(event) =>
+              setEditingInfo({ ...editingInfo, phone: event.target.value })
+            }
           />
         </div>
       </S.ContactInfos>
@@ -69,7 +72,7 @@ const CardContact = ({
             <S.SaveButton onClick={handleSave}>
               <IoMdCheckmarkCircleOutline size={28} />
             </S.SaveButton>
-            <S.RemoveButton onClick={cancelEditing}>
+            <S.RemoveButton onClick={() => setIsEditing(false)}>
               <MdOutlineCancel size={28} />
             </S.RemoveButton>
           </>
