@@ -12,12 +12,16 @@ const App = () => {
   const handleOpenModal = () => {
     setModalIsOpen(true);
   };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
   return (
     <Provider store={store}>
       <AppHeader />
       <AppCardList />
       <ButtonNewContact openModal={handleOpenModal} />
-      {modalIsOpen && <NewContactModal />}
+      {modalIsOpen && <NewContactModal onClose={handleCloseModal} />}
     </Provider>
   );
 };

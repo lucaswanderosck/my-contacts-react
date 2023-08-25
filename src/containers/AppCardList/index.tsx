@@ -5,6 +5,7 @@ import { RootReducer } from "../../store";
 import { LuClipboardList } from "react-icons/lu";
 import { setSearchFilter } from "../../store/reducers/filterContatcs";
 import Input from "../../components/Input";
+import { BsSearch } from "react-icons/bs";
 
 const AppCardList = () => {
   const { contactItems } = useSelector((state: RootReducer) => state.contacts);
@@ -22,6 +23,7 @@ const AppCardList = () => {
   return (
     <S.Container>
       <Input
+        Icon={BsSearch}
         placeholder="Pesquisar pelo nome"
         value={searchFilter}
         onChange={(event: { target: { value: string } }) =>

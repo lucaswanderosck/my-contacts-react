@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import { FiSearch } from "react-icons/fi";
 
 type Props = {
   title: string;
@@ -7,9 +6,8 @@ type Props = {
 
 const Button = ({ title }: Props) => {
   return (
-    <Container type="button">
+    <Container type="submit">
       {title}
-      <FiSearch />
     </Container>
   );
 };

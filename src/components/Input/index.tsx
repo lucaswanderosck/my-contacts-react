@@ -1,11 +1,14 @@
-import { BsSearch } from "react-icons/bs";
 import { Container } from "./styles";
 
-const Input = ({ ...rest }) => {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+const Input = ({ Icon, ...rest }: Props) => {
   return (
     <Container>
-      <BsSearch size={20} />
-      <input type="text" {...rest} />
+      {Icon && <Icon />}
+      <input {...rest} />
     </Container>
   );
 };

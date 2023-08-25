@@ -8,12 +8,13 @@ export const Container = styled.div`
   border-radius: 0.8rem;
 
   > svg {
+    font-size: 2rem;
     position: absolute;
     top: 50%;
     left: 1rem;
     transform: translateY(-50%);
-    color: ${({ theme }) => theme.colors.blue};
-    margin-left: .8rem;
+    color: ${({ theme }) => theme.colors.purple_dark};
+    margin-left: 0.8rem;
   }
 
   > input {
@@ -27,6 +28,12 @@ export const Container = styled.div`
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.gray_300};
+      font-size: 1.4rem;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
     }
   }
 `;
