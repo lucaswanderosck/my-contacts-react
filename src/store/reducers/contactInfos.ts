@@ -6,26 +6,7 @@ type ContactState = {
 };
 
 const initialState: ContactState = {
-  contactItems: [
-    {
-      id: 1,
-      name: "João",
-      email: "joao@gmail.com",
-      phone: "(99) 99999-9999",
-    },
-    {
-      id: 2,
-      name: "Lucas",
-      email: "lucas@gmail.com",
-      phone: "(99) 99999-9999",
-    },
-    {
-      id: 3,
-      name: "Maria",
-      email: "maria@gmail.com",
-      phone: "(99) 99999-9999",
-    },
-  ],
+  contactItems: [],
 };
 
 const contactsSlice = createSlice({
