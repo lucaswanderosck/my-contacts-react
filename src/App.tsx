@@ -21,7 +21,7 @@ const App = () => {
       <AppHeader />
       <AppCardList />
       <ButtonNewContact openModal={handleOpenModal} />
-      {modalIsOpen && <NewContactModal onClose={handleCloseModal} />}
+      <NewContactModal isOpen={modalIsOpen} onClose={handleCloseModal} />
     </Provider>
   );
 };

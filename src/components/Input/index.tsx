@@ -1,16 +1,17 @@
+import React, { forwardRef, InputHTMLAttributes } from "react";
 import { Container } from "./styles";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
-const Input = ({ Icon, ...rest }: Props) => {
+const Input = forwardRef<HTMLInputElement, Props>(({ Icon, ...rest }, ref) => {
   return (
     <Container>
       {Icon && <Icon />}
-      <input {...rest} />
+      <input ref={ref} {...rest} />
     </Container>
   );
-};
+});
 
 export default Input;

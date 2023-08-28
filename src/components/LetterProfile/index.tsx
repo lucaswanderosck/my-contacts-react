@@ -34,7 +34,7 @@ const LetterProfile = ({ letter }: Props) => {
 
   return (
     <Container style={{ backgroundColor: color }} onClick={changeColor}>
-      {letter[0]}
+      {letter[0].toUpperCase()}
     </Container>
   );
 };

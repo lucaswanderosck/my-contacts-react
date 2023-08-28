@@ -6,26 +6,7 @@ type ContactState = {
 };
 
 const initialState: ContactState = {
-  contactItems: [
-    {
-      id: 1,
-      name: "John",
-      email: "john@gmail.com",
-      phone: "(22) 98145-8946",
-    },
-    {
-      id: 2,
-      name: "Luíz",
-      email: "luiz@gmail.com",
-      phone: "(22) 98145-8946",
-    },
-    {
-      id: 3,
-      name: "lucas",
-      email: "lucas@gmail.com",
-      phone: "(22) 98145-8946",
-    },
-  ],
+  contactItems: [],
 };
 
 const contactsSlice = createSlice({
@@ -46,8 +27,26 @@ const contactsSlice = createSlice({
         state.contactItems[contactIndex] = action.payload;
       }
     },
+
+    addContact: (state, action: PayloadAction<Omit<ContactClass, "id">>) => {
+      const contactExists = state.contactItems.find(
+        (contact) =>
+          contact.name.toLowerCase() === action.payload.name.toLowerCase()
+      );
+      if (!contactExists) {
+        const lastContact = state.contactItems[state.contactItems.length - 1];
+        const newContact = {
+          id: lastContact ? lastContact.id + 1 : 1,
+          ...action.payload,
+        };
+        state.contactItems.push(newContact);
+        console.log(state.contactItems.length);
+      } else {
+        alert("O contato já existe");
+      }
+    },
   },
 });
 
-export const { removeContact, editContact } = contactsSlice.actions;
+export const { removeContact, editContact, addContact } = contactsSlice.actions;
 export default contactsSlice.reducer;

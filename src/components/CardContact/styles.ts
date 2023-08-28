@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import 'animate.css'
 
 export const Container = styled.div`
   display: flex;
@@ -9,6 +10,7 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray_400};
   background-color: ${({ theme }) => theme.colors.gray_500};
   margin-bottom: 1.2rem;
+  animation: fadeIn 1.5s;
 `;
 
 export const ContactInfos = styled.div`
