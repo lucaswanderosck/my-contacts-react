@@ -16,12 +16,17 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    width: 50rem;
+    max-width: 50rem;
+    width: 100%;
     background-color: ${({ theme }) => theme.colors.gray_600};
     border: 1px solid ${({ theme }) => theme.colors.gray_400};
     padding: 2rem;
     animation: fadeInUp;
     animation-duration: 1.5s;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
   }
 `;
 
@@ -38,6 +43,5 @@ export const TitleForm = styled.h2`
 
   > svg {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.danger};
   }
 `;

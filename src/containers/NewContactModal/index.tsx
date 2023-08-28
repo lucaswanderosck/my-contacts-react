@@ -25,17 +25,10 @@ const NewContactModal = ({ onClose, isOpen }: Props) => {
   const dispatch = useDispatch();
 
   const nameRef = useRef<HTMLInputElement | null>(null);
-  // const phoneRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     setIsVisible(isOpen);
   }, [isOpen]);
-
-  // useEffect(() => {
-  //   if (nameRef.current) {
-  //     nameRef.current.focus();
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (isVisible && nameRef.current) {
@@ -79,7 +72,7 @@ const NewContactModal = ({ onClose, isOpen }: Props) => {
             placeholder="Nome"
             required
             ref={nameRef}
-            onChange={({ target }) => setName(target.value)}
+            onChange={(event) => setName(event.target.value)}
           />
           <Input
             Icon={MdPhone}

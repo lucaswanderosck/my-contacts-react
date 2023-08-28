@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { MdOutlineCancel } from "react-icons/md";
@@ -14,54 +14,65 @@ import LetterProfile from "../LetterProfile";
 type Props = ContactClass;
 
 const CardContact = ({
-  name: originName,
   email: originEmail,
-  phone: originPhone,
+  name: originName,
+  phone: OriginPhone,
   id,
 }: Props) => {
   const dispatch = useDispatch();
 
   const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
-  const [editingInfo, setEditingInfo] = useState({
-    name: originName,
-    email: originEmail,
-    phone: originPhone,
-  });
+  useEffect(() => {
+    if (originEmail.length > 0) {
+      setEmail(originEmail);
+    }
+  }, [originEmail]);
 
-  const handleSave = () => {
-    dispatch(editContact({ ...editingInfo, id }));
+  useEffect(() => {
+    if (originName.length > 0) {
+      setName(originName);
+    }
+  }, [originName]);
+
+  useEffect(() => {
+    if (OriginPhone.length > 0) {
+      setPhone(OriginPhone);
+    }
+  }, [OriginPhone]);
+
+  const cancelEdit = () => {
     setIsEditing(false);
+    setName(originName);
+    setPhone(OriginPhone);
+    setEmail(originEmail);
   };
 
   return (
     <S.Container>
       <S.ContactInfos>
-        <LetterProfile letter={editingInfo.name} />
+        <LetterProfile letter={name.toUpperCase()} />
         <div>
           <S.InputInfos
             type="text"
-            value={editingInfo.name}
+            value={name}
             disabled={!isEditing}
-            onChange={(event) =>
-              setEditingInfo({ ...editingInfo, name: event.target.value })
-            }
+            onChange={(event) => setName(event.target.value)}
           />
           <S.InputInfos
             type="text"
-            value={editingInfo.email}
+            value={phone}
             disabled={!isEditing}
-            onChange={(event) =>
-              setEditingInfo({ ...editingInfo, email: event.target.value })
-            }
+            onChange={(event) => setName(event.target.value)}
           />
           <S.InputInfos
             type="text"
-            value={editingInfo.phone}
+            value={email}
             disabled={!isEditing}
-            onChange={(event) =>
-              setEditingInfo({ ...editingInfo, phone: event.target.value })
-            }
+            onChange={(event) => setName(event.target.value)}
           />
         </div>
       </S.ContactInfos>
@@ -69,10 +80,15 @@ const CardContact = ({
       <S.ActionBar>
         {isEditing ? (
           <>
-            <S.SaveButton onClick={handleSave}>
+            <S.SaveButton
+              onClick={() => {
+                dispatch(editContact({ name, phone, email, id }));
+                setIsEditing(false);
+              }}
+            >
               <IoMdCheckmarkCircleOutline size={28} />
             </S.SaveButton>
-            <S.RemoveButton onClick={() => setIsEditing(false)}>
+            <S.RemoveButton onClick={cancelEdit}>
               <MdOutlineCancel size={28} />
             </S.RemoveButton>
           </>

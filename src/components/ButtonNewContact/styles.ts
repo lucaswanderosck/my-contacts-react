@@ -8,4 +8,14 @@ export const Container = styled.button`
   bottom: 6rem;
   right: 6rem;
   cursor: pointer;
+
+  &:hover {
+    filter: saturate(150%);
+    transition: filter 0.2s;
+  }
+
+  @media (max-width: 768px) {
+    bottom: 2rem;
+    right: 2rem;
+  }
 `;

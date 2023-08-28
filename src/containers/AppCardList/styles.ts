@@ -12,6 +12,10 @@ export const Container = styled.div`
     margin: 6rem 0 2rem;
     color: ${({ theme }) => theme.colors.purple};
 
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+
     > span {
       font-size: 1.2rem;
       border-radius: 0.8rem;
@@ -19,7 +23,16 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.colors.gray_200};
       padding: 0.2rem 0.8rem;
       margin-left: 0.8rem;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    padding-bottom: 10rem;
   }
 `;
 

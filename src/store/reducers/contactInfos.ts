@@ -6,7 +6,26 @@ type ContactState = {
 };
 
 const initialState: ContactState = {
-  contactItems: [],
+  contactItems: [
+    {
+      id: 1,
+      name: "João",
+      email: "joao@gmail.com",
+      phone: "(99) 99999-9999",
+    },
+    {
+      id: 2,
+      name: "Lucas",
+      email: "lucas@gmail.com",
+      phone: "(99) 99999-9999",
+    },
+    {
+      id: 3,
+      name: "Maria",
+      email: "maria@gmail.com",
+      phone: "(99) 99999-9999",
+    },
+  ],
 };
 
 const contactsSlice = createSlice({
@@ -40,7 +59,6 @@ const contactsSlice = createSlice({
           ...action.payload,
         };
         state.contactItems.push(newContact);
-        console.log(state.contactItems.length);
       } else {
         alert("O contato já existe");
       }

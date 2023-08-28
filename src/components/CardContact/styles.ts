@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import 'animate.css'
+import "animate.css";
 
 export const Container = styled.div`
   display: flex;
@@ -16,10 +16,11 @@ export const Container = styled.div`
 export const ContactInfos = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.2rem;
 `;
 
 export const InputInfos = styled.input`
+  padding: 0.4rem 0;
   display: block;
   background: none;
   border: none;
@@ -27,17 +28,19 @@ export const InputInfos = styled.input`
   color: ${({ theme }) => theme.colors.gray_200};
   font-size: 1.2rem;
 
+  &:not(:disabled) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray_200};
+  }
+
   &:first-child {
     font-weight: bold;
-    font-size: 1.6rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.8rem;
+    width: 16rem;
   }
 `;
 
 export const ActionBar = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.6rem;
 `;
 
