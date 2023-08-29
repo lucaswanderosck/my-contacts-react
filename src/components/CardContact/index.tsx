@@ -16,7 +16,7 @@ type Props = ContactClass;
 const CardContact = ({
   email: originEmail,
   name: originName,
-  phone: OriginPhone,
+  phone: originPhone,
   id,
 }: Props) => {
   const dispatch = useDispatch();
@@ -30,24 +30,20 @@ const CardContact = ({
     if (originEmail.length > 0) {
       setEmail(originEmail);
     }
-  }, [originEmail]);
 
-  useEffect(() => {
     if (originName.length > 0) {
       setName(originName);
     }
-  }, [originName]);
 
-  useEffect(() => {
-    if (OriginPhone.length > 0) {
-      setPhone(OriginPhone);
+    if (originPhone.length > 0) {
+      setPhone(originPhone);
     }
-  }, [OriginPhone]);
+  }, [originEmail, originName, originPhone]);
 
   const cancelEdit = () => {
     setIsEditing(false);
     setName(originName);
-    setPhone(OriginPhone);
+    setPhone(originPhone);
     setEmail(originEmail);
   };
 
