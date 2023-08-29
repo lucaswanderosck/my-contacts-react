@@ -72,7 +72,7 @@ const NewContactModal = ({ onClose, isOpen }: Props) => {
             placeholder="Nome"
             required
             ref={nameRef}
-            onChange={(event) => setName(event.target.value)}
+            onChange={({ target }) => setName(target.value)}
           />
           <Input
             Icon={MdPhone}

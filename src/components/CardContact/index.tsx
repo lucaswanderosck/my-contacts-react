@@ -60,19 +60,19 @@ const CardContact = ({
             type="text"
             value={name}
             disabled={!isEditing}
-            onChange={(event) => setName(event.target.value)}
+            onChange={({ target }) => setName(target.value)}
           />
           <S.InputInfos
             type="text"
             value={phone}
             disabled={!isEditing}
-            onChange={(event) => setName(event.target.value)}
+            onChange={({ target }) => setPhone(target.value)}
           />
           <S.InputInfos
             type="text"
             value={email}
             disabled={!isEditing}
-            onChange={(event) => setName(event.target.value)}
+            onChange={({ target }) => setEmail(target.value)}
           />
         </div>
       </S.ContactInfos>
